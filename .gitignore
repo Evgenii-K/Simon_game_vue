@@ -1,1 +1,6 @@
+*.docx
+*.rar
+*.pdf
 node_modules
+Lesson_1
+Lesson_2
