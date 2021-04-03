@@ -1,0 +1,22 @@
+{
+  "name": "simon_game_vue",
+  "version": "1.0.0",
+  "description": "Simon game on Vue",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evgenii-K/Simon_game_vue.git"
+  },
+  "author": "Evgenii-K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evgenii-K/Simon_game_vue/issues"
+  },
+  "homepage": "https://github.com/Evgenii-K/Simon_game_vue#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
