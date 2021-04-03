@@ -3,7 +3,7 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 7700;
 
-app.use(express.static(__dirname + './public/'));
+app.use(express.static(__dirname + '/public'));
 
 app.listen(port, err => {
     if (err) {
