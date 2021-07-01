@@ -1,31 +1,59 @@
 <template>
-  <div>
-    <h1>Hello world from Vue</h1>
-    <BoxList :startGame="btnHidden" />
-    <Button @start="start" :btnHidden="btnHidden" />
+  <div class="content">
+    <h1>Simon Game on Vue</h1>
+    <h3>Level {{ level }}</h3>
+    <BoxList 
+      :start="start"
+      @enable="endGame"
+      @level="level = $event"
+    />
+    <button 
+      class="btn"
+      @click="start = true"
+      :disabled="start"
+    >
+      Start
+    </button>
+    <Modal 
+      v-if="modalShow"
+      @close="modalClose"
+      @start="startGame"
+      :level="level"
+    />
   </div>
 </template>
 
 
 <script>
-import Button from "./components/Button.vue";
-import BoxList from "./components/BoxList.vue";
+import BoxList from "./components/BoxList.vue"
+import Modal from "./components/Modal.vue"
+
 export default {
   data() {
     return {
-      btnHidden: true,
+      level: 1,
+      start: false,
+      modalShow: false
     };
   },
   components: {
-    Button,
     BoxList,
+    Modal
   },
   methods: {
-    start() {
-      this.btnHidden = false;
-      alert("Start");
+    startGame () {
+      this.modalShow = false
+      this.start = true
     },
-  },
+    endGame () {
+      this.start = false
+      this.modalShow = true
+    },
+    modalClose () {
+      this.level = 1
+      this.modalShow = false
+    }
+  }
 };
 </script>
 

@@ -2,7 +2,8 @@
   <div
     class="colorBox"
     :style="{ backgroundColor: activeColor() }"
-    @click="choiceBox()"
+    @mousedown="item.active = true"
+    @mouseup="activeFalse"
   ></div>
 </template>
 
@@ -16,30 +17,26 @@ export default {
   },
   data() {
     return {
-      brightColor: "",
     };
   },
   methods: {
-    choiceBox() {
-      this.brightColor = this.item.color;
-      console.log(this.brightColor.slice(5, 10));
-    },
-    activeColor() {
-      this.brightColor = this.item.color;
+    activeColor () {
       if (this.item.active) {
-        return this.brightColor.slice(5, this.brightColor.length);
+        return this.item.color.slice(5, this.item.length);
       } else {
-        return this.brightColor;
+        return this.item.color;
       }
     },
-  },
+    activeTrue () {
+      this.item.active = true
+    },
+    activeFalse () {
+      this.$emit('onCheck', this.item.id)
+      setTimeout(() => {this.item.active = false}, 200)
+    }
+  }
 };
 </script>
 
-<style scoped>
-.colorBox {
-  width: 150px;
-  height: 150px;
-  border: 1px solid black;
-}
+<style>
 </style>
